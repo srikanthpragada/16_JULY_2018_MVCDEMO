@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MvcDemo.Models.Course>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table border="1" width="100%">
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duration)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td style="text-align:right">
+                @Html.DisplayFor(modelItem => item.Fee)
+            </td>
+            <td style="text-align:right">
+                @Html.DisplayFor(modelItem => item.Duration)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
