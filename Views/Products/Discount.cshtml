@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Discount</title>
+</head>
+<body>
+    <form action="" method="post">
+        <h2>Discount Calculation</h2>
+        Sales Amount <br />
+        <input type="number" name="amount" value="@ViewBag.Amount" />
+        <p/>
+        Discount Rate <br />
+        <input type="number" name="rate"  value="@ViewBag.Rate"  />
+        <p/>
+        <input type="submit" value="Calculate" />
+        <h3>@ViewBag.Discount </h3>
+    </form>
+</body>
+</html>

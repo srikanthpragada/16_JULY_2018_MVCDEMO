@@ -1,0 +1,42 @@
+﻿@model MvcDemo.Models.DiscountModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Discount2</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</head>
+<body>
+    <h2>Discount Calculation</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.LabelFor(model => model.Amount)
+        <br />
+        @Html.TextBoxFor(model => model.Amount, 
+                   new { type = "number", placeholder="Amount" } )
+        @Html.ValidationMessageFor(model => model.Amount, "")
+        <p />
+        @Html.LabelFor(model => model.Rate)
+        <br />
+        @Html.TextBoxFor(model => model.Rate)
+        @Html.ValidationMessageFor(model => model.Rate, "")
+        <p />
+        <input type="submit" value="Calculate"/>
+        if (Model.Discount > 0)
+        {
+            <h3>Discount : @Model.Discount</h3>
+        }
+    }
+
+
+</body>
+</html>

@@ -15,6 +15,37 @@ namespace MvcDemo.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult Discount()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Discount(double amount, double rate)
+        {
+            double discount = amount * rate / 100;
+            ViewBag.Discount = discount;
+            ViewBag.Amount = amount;
+            ViewBag.Rate = rate;
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult Discount2()
+        {
+            var model = new DiscountModel();
+            model.Rate = 10;
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Discount2(DiscountModel model)
+        {
+            model.Discount = model.Amount * model.Rate / 100;
+            return View(model);
+        }
+
         public ActionResult Delete(String id)
         {
             // Delete product by given id
