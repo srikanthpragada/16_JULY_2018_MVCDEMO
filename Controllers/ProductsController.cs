@@ -12,7 +12,42 @@ namespace MvcDemo.Controllers
     {
         public ActionResult Create()
         {
-            return View();
+            var model = new Product();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Create(Product model)
+        {
+            // process 
+            if (!ModelState.IsValid)
+                return View(model);
+            else
+            {
+                try
+                {
+                    SqlConnection con = new SqlConnection(Database.LocalDbConnectionString);
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("insert into products(prodname,price,qoh,catcode,remarks) values(@prodname,@price,@qoh,@catcode,@remarks)", con);
+                    cmd.Parameters.AddWithValue("@prodname", model.Name);
+                    cmd.Parameters.AddWithValue("@price", model.Price);
+                    cmd.Parameters.AddWithValue("@qoh", model.Qoh);
+                    cmd.Parameters.AddWithValue("@catcode", model.Category);
+                    if (model.Remarks == null)
+                        model.Remarks = "";
+                    HttpContext.Trace.Write("Value of Remarks = " + model.Remarks.Length);
+                    cmd.Parameters.AddWithValue("@remarks", model.Remarks);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    return RedirectToAction("Index");
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "Error : " + ex.Message;
+                    HttpContext.Trace.Write("Error = " + ex.Message );
+                    return View(model);
+                }
+            }
         }
 
         [HttpGet]
@@ -74,7 +109,7 @@ namespace MvcDemo.Controllers
                 });
 
             }
-            con.Close(); 
+            con.Close();
 
             return View(products);
         }
