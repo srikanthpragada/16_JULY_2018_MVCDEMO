@@ -152,6 +152,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AjaxController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
@@ -202,6 +203,8 @@
     <Content Include="Views\Products\Discount.cshtml" />
     <Content Include="Views\Products\Discount2.cshtml" />
     <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Shared\master.cshtml" />
+    <Content Include="Views\Ajax\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

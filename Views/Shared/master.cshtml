@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <div class="banner">Inventory Application</div>
+    <div class="menu">
+        <a href="/Products/Index">List Of Product</a>
+        &nbsp;&nbsp;
+        <a href="/Products/Create">Add Product</a>
+    </div>
+    <div>
+        <h2>@ViewBag.Title</h2>
+        @RenderBody()
+    </div>
+    <div>
+        <br/>
+        <hr/>
+        Srikanth Technologies
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

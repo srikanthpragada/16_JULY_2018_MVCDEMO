@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AJAX Demo</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script>
+        function getDateTime() {
+            $.get("/Ajax/Now", {}, showDateTime);
+        }
+
+        function showDateTime(response) {
+            $("#now").text(response);
+        }
+
+        function getProdName() {
+            $.get("/Ajax/Prodname/" + $("#prodid").val(), {}, showProdName);
+        }
+
+        function showProdName(response) {
+            if (response)
+                $("#prodname").text(response);
+            else
+                $("#prodname").text("Invalid Product Id");
+        }
+    </script>
+</head>
+<body>
+    <h2>Ajax Demo</h2>
+    <button onclick="getDateTime()">Show Date and Time</button>
+    <h2 id="now"></h2>
+    <hr/>
+    Product Id : <input type="text" id="prodid" onblur="getProdName()"/>
+    <span id="prodname"></span>
+
+</body>
+</html>
