@@ -113,5 +113,39 @@ namespace MvcDemo.Controllers
 
             return View(products);
         }
+
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string name)
+        {
+            // Connect to MS Sql Server 
+            SqlConnection con = new SqlConnection(Database.LocalDbConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from products where prodname like @name", con);
+            cmd.Parameters.AddWithValue("@name","%" + name + "%");
+            SqlDataReader dr = cmd.ExecuteReader();
+            List<Product> products = new List<Product>();
+
+            while (dr.Read())
+            {
+                products.Add(new Product
+                {
+                    Id = dr["prodid"].ToString(),
+                    Name = dr["prodname"].ToString(),
+                    Remarks = dr["remarks"].ToString(),
+                    Category = dr["catcode"].ToString(),
+                    Price = Double.Parse(dr["price"].ToString()),
+                    Qoh = Int32.Parse(dr["qoh"].ToString())
+                });
+            }
+            con.Close();
+            return PartialView("SearchProducts", products);
+        }
+
+
     }
 }

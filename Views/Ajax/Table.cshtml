@@ -1,0 +1,12 @@
+﻿@model Int32
+
+<table border="1">
+    @for(var i = 1; i <= 10; i ++)
+    {
+        <tr>
+            <td style="text-align:right">@Model</td>
+            <td style="text-align:right">@i</td>
+            <td style="text-align:right">@(Model  * i)</td>
+        </tr>
+    }
+</table>

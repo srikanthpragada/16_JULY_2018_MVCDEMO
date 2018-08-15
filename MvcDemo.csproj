@@ -177,6 +177,8 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -205,6 +207,10 @@
     <Content Include="Views\Products\Create.cshtml" />
     <Content Include="Views\Shared\master.cshtml" />
     <Content Include="Views\Ajax\Index.cshtml" />
+    <Content Include="Views\Ajax\Helper.cshtml" />
+    <Content Include="Views\Ajax\Table.cshtml" />
+    <Content Include="Views\Products\Search.cshtml" />
+    <Content Include="Views\Products\SearchProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

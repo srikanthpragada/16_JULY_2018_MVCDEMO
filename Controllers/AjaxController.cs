@@ -27,5 +27,27 @@ namespace MvcDemo.Controllers
             else
                 return null; 
         }
+
+        public ActionResult Helper()
+        {
+            return View();
+        }
+
+        public string  Interest(double amount, int months)
+        {
+            double interest;
+
+            if (months <= 24)
+                interest = amount * 0.10;
+            else
+                interest = amount * 0.12;
+
+            return interest.ToString();
+        }
+
+        public ActionResult Table(int number)
+        {
+            return PartialView(number);
+        }
     }
 }

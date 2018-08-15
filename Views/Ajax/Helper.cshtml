@@ -1,0 +1,44 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Ajax Helper Demo</title>
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</head>
+<body>
+    @Ajax.ActionLink("Show Date and Time", "Now",
+                           new AjaxOptions { UpdateTargetId = "now" })
+    <h2 id="now"></h2>
+
+    <h2>Interest Calculation</h2>
+    @using (Ajax.BeginForm("Interest", new AjaxOptions { UpdateTargetId = "interest" }))
+    {
+        <div>Loan Amount </div>
+        <input type="text" name="amount" />
+        <p />
+        <div>Period (Months) </div>
+        <input type="text" name="months" />
+        <p />
+        <input type="submit" value="Calculate" />
+        <h2 id="interest"></h2>
+    }
+
+    <h2>Table Generation</h2>
+    @using (Ajax.BeginForm("Table", new AjaxOptions { UpdateTargetId = "result" }))
+    {
+        <span>Number : </span>
+        <input type="text" name="number" />
+        <input type="submit" value="Generate" />
+        <p/>
+        <div id="result"></div>
+    }
+
+</body>
+</html>

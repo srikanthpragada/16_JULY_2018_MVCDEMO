@@ -12,6 +12,7 @@
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script>
         function getDateTime() {
+            // get(url,data,successCallback)
             $.get("/Ajax/Now", {}, showDateTime);
         }
 
