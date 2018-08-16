@@ -3,11 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 
 namespace MvcDemo.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         public ActionResult Create()
@@ -87,6 +89,7 @@ namespace MvcDemo.Controllers
             return RedirectToAction("Index");
         }
 
+        [OutputCache(Duration = 60)]
         public ActionResult Index()
         {
             // Connect to MS Sql Server 
@@ -122,6 +125,7 @@ namespace MvcDemo.Controllers
         [HttpPost]
         public ActionResult Search(string name)
         {
+            Thread.Sleep(2000);
             // Connect to MS Sql Server 
             SqlConnection con = new SqlConnection(Database.LocalDbConnectionString);
             con.Open();

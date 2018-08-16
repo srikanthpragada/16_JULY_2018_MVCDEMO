@@ -156,6 +156,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HelloController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +212,7 @@
     <Content Include="Views\Ajax\Table.cshtml" />
     <Content Include="Views\Products\Search.cshtml" />
     <Content Include="Views\Products\SearchProducts.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
