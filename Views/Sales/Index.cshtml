@@ -1,0 +1,50 @@
+﻿@model IEnumerable<MvcDemo.Models.EF.Sale>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "salesmaster.cshtml";
+}
+
+<table cellpadding="5pt" border="1"  width="100%">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Prodid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Qty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransDate)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td style="text-align:center">
+            @Html.DisplayFor(modelItem => item.Prodid)
+        </td>
+
+        <td style="text-align:right">
+            @Html.DisplayFor(modelItem => item.Qty)
+        </td>
+        <td style="text-align:right">
+            @item.Amount.ToString("c")
+        </td>
+        <td style="text-align:center">
+            @item.TransDate.ToString("dd-MM-yy")
+        </td>
+
+        <td style="text-align:center">
+            @Html.ActionLink("Edit", "Edit", new { id = item.Invno }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Invno } ,
+                   new { onclick="return confirm('Do you want to delete?')"})
+        </td>
+    </tr>
+}
+
+</table>
