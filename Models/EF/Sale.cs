@@ -14,9 +14,15 @@ namespace MvcDemo.Models.EF
         public int Invno { get; set; }
         public int Qty { get; set; }
         public decimal Amount { get; set; }
+
+        // [DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime TransDate { get; set; }
+
         public int Prodid { get; set; }
-        // public virtual Product  Product { get; set; }
+
+        [ForeignKey("Prodid")]
+        public virtual Product  Product { get; set; }
 
     }
 }

@@ -5,6 +5,17 @@
     Layout = "salesmaster.cshtml";
 }
 
+<script>
+    $(document).ready(
+        function () {
+            $("#TransDate").datepicker({
+                dateFormat: "dd-mm-yy"
+            })
+        }
+    )
+
+</script>
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -37,7 +48,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.TransDate, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.TransDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.TransDate, new { htmlAttributes = new { autocomplete="off", @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.TransDate, "", new { @class = "text-danger" })
         </div>
     </div>

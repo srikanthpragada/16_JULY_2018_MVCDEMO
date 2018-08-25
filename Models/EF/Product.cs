@@ -12,13 +12,13 @@ namespace MvcDemo.Models.EF
     {
         [Key]
         [Column("prodid")]
-        public string Prodid { get; set; }
+        public int Prodid { get; set; }
 
         [Column("prodname")]
         public string ProdName { get; set; }
 
-        public double Price { get; set; }
-        public int Qoh { get; set; }
+        public decimal? Price { get; set; }
+        public int? Qoh { get; set; }
         public string Remarks { get; set; }
         public string Catcode { get; set; }
        
