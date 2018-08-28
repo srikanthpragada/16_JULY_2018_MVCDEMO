@@ -15,8 +15,8 @@ namespace MvcDemo.Models.EF
         public int Qty { get; set; }
         public decimal Amount { get; set; }
 
-        // [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
+        //[DataType(DataType.Date)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy}")]
         public DateTime TransDate { get; set; }
 
         public int Prodid { get; set; }

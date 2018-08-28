@@ -1,0 +1,140 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Category Client</title>
+    <script src="Scripts/jquery-1.12.4.js"></script>
+    <script>
+        var URL = "/api/Categories";
+
+        $(document).ready(
+            function () {
+                $("#categories").hide();  // hide table 
+            }
+        );
+
+        function getCategories() {
+            $.getJSON(URL, {}, showCategories);
+        }
+
+        function showCategories(categories) {
+            $("#catrows").html("")
+            $.each(categories,
+                function (idx, cat) {
+                    $("#catrows").append("<tr><td>" + cat.CatCode + "</td><td>" +
+                        cat.CatDesc + "</td></tr>");
+                } // anonymous function
+            ); // each()
+
+            $("#categories").show();
+        } // showCourses
+
+        function getCategory() {
+            $.getJSON(URL + "/" +  $("#code").val())
+                .done(show_category)
+                .fail(category_not_found)
+        }
+
+        function show_category(category) {
+            $("#desc").val(category.CatDesc)
+        }
+
+        function category_not_found() {
+            $("#desc").val("");
+            alert("Sorry! Category Not Found!");
+        }
+
+        function addCategory() {
+            $.ajax(
+                {
+                    "url": URL,
+                    "data": {
+                        "CatCode": $("#code").val(),
+                        "CatDesc": $("#desc").val()
+                    },
+                    "type": "post",
+                    "success": add_success,
+                    "error": add_error
+                }
+            ); // ajax()
+        }
+
+        function add_success() {
+            alert("Added Category Successfully");
+        }
+
+        function add_error() {
+            alert("Could not add category!");
+        }
+
+        function deleteCategory() {
+            $.ajax(
+                {
+                    "url": URL + "/" + $("#code").val(),
+                    "type": "delete",
+                    "success": delete_success,
+                    "error": delete_error
+                }
+            ); // ajax()
+        }
+
+        function delete_success() {
+            alert("Deleted Category Successfully");
+        }
+
+        function delete_error() {
+            alert("Could not delete category!");
+        }
+
+
+        function updateCategory() {
+            $.ajax(
+                {
+                    "url": URL + "/" + $("#code").val(),
+                    "data": {
+                        "CatCode": $("#code").val(),
+                        "CatDesc": $("#desc").val()
+                    },
+                    "type": "put",
+                    "success": update_success,
+                    "error": update_error
+                }
+            ); // ajax()
+        }
+
+        function update_success() {
+            alert("Updated Category Successfully");
+        }
+
+        function update_error() {
+            alert("Could not update category!");
+        }
+
+    </script>
+</head>
+<body>
+    <h1>Category Client</h1>
+    Code <br />
+    <input type="text" id="code" /> <button onclick="getCategory()">Get</button>
+    <p />
+    Description <br />
+    <input type="text" id="desc" />
+    <p />
+    <button onclick="addCategory()">Add </button>
+    <button onclick="deleteCategory()">Delete </button>
+    <button onclick="updateCategory()">Update </button>
+    <button onclick="getCategories()">List</button>
+    <p />
+
+    <table border="1" cellpadding="5pt" id="categories">
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Description</th>
+           </tr>
+        </thead>
+        <tbody id="catrows"></tbody>
+    </table>
+
+</body>
+</html>

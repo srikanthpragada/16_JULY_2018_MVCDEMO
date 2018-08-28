@@ -18,6 +18,7 @@ namespace MvcDemo.Models.EF
         
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Sale> Sales { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
 
     }
 
